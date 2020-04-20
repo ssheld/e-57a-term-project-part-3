@@ -1,0 +1,53 @@
+server:
+  port: 5555
+
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.stephensheldon: DEBUG
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+  serviceUrl:
+    defaultZone: http://localhost:8761/eureka/
+
+# Use Case 1: Zuul defaults
+
+# Use Case 2: Shorten organizationservice route by manually
+#             adding shorten organization name to /organization/**
+#zuul:
+#  routes:
+#    organizationservice: /organization/**
+
+# Use Case 3: Shorten assetsservice to /assets/*
+#zuul:
+#  routes:
+#    organizationservice: /organization/**
+#    assetsservice: /assets/**
+
+# Use Case 4: Map organizationservice to ignored-services
+#zuul:
+#  ignored-services: 'organizationservice'
+#  routes:
+#    organizationservice: /organization/**
+
+# Use Case 5: Use a custom route /api as a prefix
+#zuul:
+#  ignored-services: '*'
+#  prefix: /api
+#  routes:
+#    organizationservice: /organization/**
+#    assetsservice: /assets/**
+
+# Use case 6: Map the assetsservice to a static route with port 8081
+#zuul:
+#  routes:
+#    assetsstatic:
+#      path: /assetsstatic/**
+#      url:  http://assetsservice-static:8081
