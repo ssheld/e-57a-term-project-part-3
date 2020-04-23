@@ -13,7 +13,7 @@ public class Asset {
 
     @Id
     @Column(name = "asset_id", nullable = false)
-    private String id;
+    private String assetId;
 
     @Column(name = "organization_id", nullable = false)
     private String organizationId;
@@ -39,12 +39,12 @@ public class Asset {
     @Transient
     private String contactPhone = "";
 
-    public String getId() {
-        return id;
+    public String getAssetId() {
+        return assetId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAssetId(String id) {
+        this.assetId = id;
     }
 
     public String getOrganizationId() {
@@ -112,7 +112,7 @@ public class Asset {
     }
 
     public Asset withId(String assetId) {
-        this.setId(assetId);
+        this.setAssetId(assetId);
         return this;
     }
 
@@ -154,7 +154,7 @@ public class Asset {
     @Override
     public String toString() {
         return "Asset{" +
-                "id='" + id + '\'' +
+                "assetId='" + assetId + '\'' +
                 ", organizationId='" + organizationId + '\'' +
                 ", assetName='" + assetName + '\'' +
                 ", assetType='" + assetType + '\'' +

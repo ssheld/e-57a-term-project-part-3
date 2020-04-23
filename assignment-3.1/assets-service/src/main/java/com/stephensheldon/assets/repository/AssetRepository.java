@@ -16,5 +16,5 @@ public interface AssetRepository extends JpaRepository<Asset, String> {
 
     Optional<List<Asset>> findByOrganizationId(String organizationId);
 
-    Optional<Asset> findByIdAndOrganizationId(String assetId, String organizationId);
+    Optional<Asset> findByAssetIdAndOrganizationId(String assetId, String organizationId);
 }

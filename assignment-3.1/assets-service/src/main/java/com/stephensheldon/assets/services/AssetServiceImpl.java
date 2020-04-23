@@ -57,7 +57,7 @@ public class AssetServiceImpl implements AssetService {
     @Override
     public Asset findAssetById(String organizationId, String assetId) {
 
-        Optional<Asset> asset = assetRepository.findByIdAndOrganizationId(assetId, organizationId);
+        Optional<Asset> asset = assetRepository.findByAssetIdAndOrganizationId(assetId, organizationId);
 
         Organization organization = getOrganization(organizationId);
 
@@ -111,14 +111,14 @@ public class AssetServiceImpl implements AssetService {
     @HystrixCommand
     @Override
     public void deleteAsset(Asset asset) {
-        assetRepository.delete(asset.getId());
+        assetRepository.delete(asset.getAssetId());
     }
 
     @HystrixCommand
     @Override
     public Asset updateAsset(Asset asset) {
 
-        Optional<Asset> foundAsset = assetRepository.findByIdAndOrganizationId(asset.getId(), asset.getOrganizationId());
+        Optional<Asset> foundAsset = assetRepository.findByAssetIdAndOrganizationId(asset.getAssetId(), asset.getOrganizationId());
 
         if (foundAsset.isPresent()) {
             if (asset.getAssetName() != null) {
