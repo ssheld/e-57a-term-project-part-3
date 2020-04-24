@@ -12,7 +12,6 @@ import java.util.concurrent.Callable;
  * Author: Stephen Sheldon
  **/
 public final class DelegatingUserContextCallable<V> implements Callable<V> {
-    private static final Logger logger = LoggerFactory.getLogger(DelegatingUserContextCallable.class);
     private final Callable<V> delegate;
 
     private UserContext originalUserContext;
@@ -25,28 +24,18 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
         this.originalUserContext = userContext;
     }
 
-    public DelegatingUserContextCallable(Callable<V> delegate) {
-        this(delegate, UserContextHolder.getContext());
-    }
-
     public V call() throws Exception {
-        UserContextHolder.setContext( originalUserContext );
+        UserContextHolder.setContext(originalUserContext);
 
         try {
             return delegate.call();
-        }
-        finally {
+        } finally {
             this.originalUserContext = null;
         }
     }
 
-    public String toString() {
-        return delegate.toString();
-    }
-
-
     public static <V> Callable<V> create(Callable<V> delegate,
                                          UserContext userContext) {
-        return new DelegatingUserContextCallable<V>(delegate, userContext);
+        return new DelegatingUserContextCallable<>(delegate, userContext);
     }
 }
