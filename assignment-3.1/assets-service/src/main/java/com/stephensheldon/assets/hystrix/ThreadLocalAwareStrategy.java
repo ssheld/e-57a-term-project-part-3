@@ -55,7 +55,7 @@ public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy {
     public <T> Callable<T> wrapCallable(Callable<T> callable) {
         return existingConcurrencyStrategy != null
                 ? existingConcurrencyStrategy
-                .wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()))
-                : super.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
+                .wrapCallable(new DelegatingUserContextCallable<>(callable, UserContextHolder.getContext()))
+                : super.wrapCallable(new DelegatingUserContextCallable<>(callable, UserContextHolder.getContext()));
     }
 }
