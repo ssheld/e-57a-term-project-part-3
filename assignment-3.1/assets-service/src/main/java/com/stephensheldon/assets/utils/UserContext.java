@@ -13,40 +13,40 @@ public class UserContext {
     public static final String USER_ID = "tmx-user-id";
     public static final String ORG_ID = "tmx-org-id";
 
-    private String correlationId = new String();
-    private String authToken = new String();
-    private String userId = new String();
-    private String orgId = new String();
+    private static final ThreadLocal<String> correlationId = new ThreadLocal<>();
+    private static final ThreadLocal<String> authToken = new ThreadLocal<>();
+    private static final ThreadLocal<String> userId = new ThreadLocal<>();
+    private static final ThreadLocal<String> orgId = new ThreadLocal<>();
 
     public String getCorrelationId() {
-        return correlationId;
+        return correlationId.get();
     }
 
-    public void setCorrelationId(String correlationId) {
-        this.correlationId = correlationId;
+    public void setCorrelationId(String cid) {
+        correlationId.set(cid);
     }
 
     public String getAuthToken() {
-        return authToken;
+        return authToken.get();
     }
 
-    public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+    public void setAuthToken(String aToken) {
+        authToken.set(aToken);
     }
 
     public String getUserId() {
-        return userId;
+        return userId.get();
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserId(String aUser) {
+        userId.set(aUser);
     }
 
     public String getOrgId() {
-        return orgId;
+        return orgId.get();
     }
 
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
+    public void setOrgId(String aOrg) {
+        orgId.set(aOrg);
     }
 }
