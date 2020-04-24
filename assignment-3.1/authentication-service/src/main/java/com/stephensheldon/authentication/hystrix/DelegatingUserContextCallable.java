@@ -37,11 +37,6 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
         }
     }
 
-    public String toString() {
-        return delegate.toString();
-    }
-
-
     public static <V> Callable<V> create(Callable<V> delegate,
                                          UserContext userContext) {
         return new DelegatingUserContextCallable<>(delegate, userContext);
