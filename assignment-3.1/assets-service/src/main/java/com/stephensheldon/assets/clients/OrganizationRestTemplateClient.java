@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,7 +21,7 @@ public class OrganizationRestTemplateClient {
     private static Logger logger = LoggerFactory.getLogger(OrganizationRestTemplateClient.class);
 
     @Autowired
-    RestTemplate restTemplate;
+    OAuth2RestTemplate restTemplate;
 
     public Organization getOrganization(String organizationId) {
         logger.debug(">>> In Assets Service.getOrganization: {}. Thread Id: {}", UserContextHolder.getContext().getCorrelationId(), Thread.currentThread().getId());
