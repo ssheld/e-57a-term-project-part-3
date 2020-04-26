@@ -19,12 +19,10 @@ services:
     environment:
       PROFILE: "default"
       SERVER_PORT: "5555"
+      EUREKASERVER_PORT: "8761"
+      CONFIGSERVER_PORT: "8888"
       CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-      EUREKASERVER_PORT: "8761"
-      DATABASESERVER_PORT: "5432"
-      CONFIGSERVER_PORT: "8888"
-      ORGSERVERNEW_PORT: "8087"
   database:
     image: postgres:9.5
     ports:
@@ -40,15 +38,13 @@ services:
     environment:
       PROFILE: "default"
       SERVER_PORT: "8080"
-      CONFIGSERVER_URI: "http://configserver:8888"
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-      AUTHSERVER_URI: "http://authenticationservice:8901/auth/user"
       EUREKASERVER_PORT: "8761"
       CONFIGSERVER_PORT: "8888"
       DATABASESERVER_PORT: "5432"
-      ORGSERVERNEW_PORT: "8087"
       ZUULSERVER_PORT: "5555"
-      AUTHSERVER_PORT: "8901"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      AUTHSERVER_URI: "http://authenticationservice:8901/auth/user"
       ENCRYPT_KEY: "IMSYMMETRIC"
   organizationservice:
     image: stephensheldon/organization-service:assignment-3.1
@@ -57,16 +53,15 @@ services:
     environment:
       PROFILE: "default"
       SERVER_PORT: "8085"
-      CONFIGSERVER_URI: "http://configserver:8888"
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-      AUTHSERVER_URI: "http://authenticationservice:8901/auth/user"
       EUREKASERVER_PORT: "8761"
       CONFIGSERVER_PORT: "8888"
       DATABASESERVER_PORT: "5432"
-      AUTHSERVER_PORT: "8901"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      AUTHSERVER_URI: "http://authenticationservice:8901/auth/user"
       ENCRYPT_KEY: "IMSYMMETRIC"
   authenticationservice:
-    image: stephensheldon/authenticationservice:assignment-3.1
+    image: stephensheldon/authentication-service:assignment-3.1
     ports:
       - "8901:8901"
     environment:
