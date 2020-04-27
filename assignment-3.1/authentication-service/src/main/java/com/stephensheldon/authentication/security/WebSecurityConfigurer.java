@@ -17,7 +17,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     // The Authentication- ManagerBean is used by Spring Security to handle authentication.
     @Override
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
@@ -30,6 +30,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
 
     // This method defines users, their passwords, and their roles.
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("jesus.quintana").password("password1").roles("USER")
