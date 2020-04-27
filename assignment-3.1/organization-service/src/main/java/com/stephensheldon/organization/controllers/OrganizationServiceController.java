@@ -24,7 +24,9 @@ public class OrganizationServiceController {
     public Organization getOrganization(@PathVariable("organizationId") String organizationId) {
         logger.debug(String.format("Looking up data for org {}", organizationId));
 
-        return organizationService.getOrg(organizationId);
+        Organization org = organizationService.getOrg(organizationId);
+        org.setContactName(org.getContactName());
+        return org;
     }
 
     @PutMapping(value="/{organizationId}")
@@ -38,9 +40,8 @@ public class OrganizationServiceController {
         organizationService.saveOrg(organization);
     }
 
-    @DeleteMapping(value="/{organizationId}")
-    public void deleteOrganization(@PathVariable("organizationId") String organizationId,
-                                   @RequestBody Organization organization) {
-        organizationService.deleteOrg(organization);
+    @DeleteMapping(value = "/{organizationId}")
+    public void deleteOrganization(@PathVariable("organizationId") String organizationId) {
+        organizationService.deleteOrg(organizationId);
     }
 }

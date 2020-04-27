@@ -40,7 +40,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @HystrixCommand
     @Override
-    public void deleteOrg(Organization organization) {
-        orgRepository.delete(organization.getId());
+    public void deleteOrg(String organizationId) {
+        orgRepository.delete(organizationId);
     }
 }
