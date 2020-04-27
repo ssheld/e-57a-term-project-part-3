@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
  * Author: Stephen Sheldon
  **/
 
+// Filter to inject the correlation ID into incoming http calls through Zuul
 @Component
 public class TrackingFilter extends ZuulFilter {
 
@@ -42,7 +43,7 @@ public class TrackingFilter extends ZuulFilter {
 
     //The helper methods that actually check if the tmx-correlation-id is present
     private boolean isCorrelationIdPresent(){
-        if (filterUtils.getCorrelationId() !=null){
+        if (filterUtils.getCorrelationId() != null) {
             return true;
         }
         return false;
