@@ -21,16 +21,15 @@ public class UserContextFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
-        //Your filter retrieves the correlation ID from the header and sets the value on the UserContext class.
+        // Filter retrieves the correlation ID from the header and sets the value on the UserContext class.
         UserContextHolder.getContext().setCorrelationId(  httpServletRequest.getHeader(UserContext.CORRELATION_ID) );
 
-        //The other values being scraped from the HTTP Headers will come into play if you ARE usING the authentication
-        //service aNd settubg ORG_ID.
+        // Grab header values for authentication and store in usercontext
         UserContextHolder.getContext().setUserId(httpServletRequest.getHeader(UserContext.USER_ID));
         UserContextHolder.getContext().setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
         UserContextHolder.getContext().setOrgId(httpServletRequest.getHeader(UserContext.ORG_ID));
 
-        logger.debug("Special Routes Service Incoming Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+        logger.debug("Zuul Service Incoming Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
