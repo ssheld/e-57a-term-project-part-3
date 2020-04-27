@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
  * Author: Stephen Sheldon
  **/
 
+// Filter to add correlation ID to each outgoing http response from Zuul
 @Component
 public class ResponseFilter extends ZuulFilter {
 
