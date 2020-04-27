@@ -4,7 +4,7 @@ security:
       clientId: eagleeye
       clientSecret: thisissecret
       accessTokenUri: http://localhost:8901/auth/oauth/token
-      userAuthorizationUri: http://localhoste:8901/auth/user
+      userAuthorizationUri: http://localhost:8901/auth/user
       clientAuthenticationScheme: form
     resource:
       userInfoUri: http://localhost:8901/auth/user
