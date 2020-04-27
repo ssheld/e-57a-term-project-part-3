@@ -3,9 +3,10 @@ package com.stephensheldon.zuulsvr.model;
 /**
  * Author: Stephen Sheldon
  **/
+
 public class UserInfo {
-    String organizationId;
-    String userId;
+    private String organizationId;
+    private String userId;
 
     public String getOrganizationId() {
         return this.organizationId;
