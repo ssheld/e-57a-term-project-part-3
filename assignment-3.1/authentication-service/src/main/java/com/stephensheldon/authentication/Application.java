@@ -18,8 +18,8 @@ import java.util.Map;
 
 @SpringBootApplication
 @RestController
-@EnableAuthorizationServer
 @EnableResourceServer
+@EnableAuthorizationServer
 public class Application {
 
     @RequestMapping(value = {"/user"}, produces = "application/json")
