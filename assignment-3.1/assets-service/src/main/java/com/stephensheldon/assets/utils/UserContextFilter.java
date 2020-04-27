@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * Author: Stephen Sheldon
  **/
+
 @Component
 public class UserContextFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(UserContextFilter.class);
@@ -27,7 +28,7 @@ public class UserContextFilter implements Filter {
         UserContextHolder.getContext().setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
         UserContextHolder.getContext().setOrgId(httpServletRequest.getHeader(UserContext.ORG_ID));
 
-        logger.debug("UserContextFilter Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+        logger.debug("Assets Service Incoming Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
