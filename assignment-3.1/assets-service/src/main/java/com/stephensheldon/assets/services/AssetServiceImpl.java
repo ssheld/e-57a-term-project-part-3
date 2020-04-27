@@ -7,7 +7,6 @@ import com.stephensheldon.assets.config.ServiceConfig;
 import com.stephensheldon.assets.model.Asset;
 import com.stephensheldon.assets.model.Organization;
 import com.stephensheldon.assets.repository.AssetRepository;
-import com.stephensheldon.assets.utils.UserContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,8 +91,6 @@ public class AssetServiceImpl implements AssetService {
                     )
     @Override
     public List<Asset> getAssetsByOrg(String organizationId) {
-
-        logger.debug("AssetsService.getAssetsByOrg  Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 
         randomLongRun();
 
