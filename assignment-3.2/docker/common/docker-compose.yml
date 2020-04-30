@@ -1,0 +1,76 @@
+version: '2.1'
+services:
+  eurekaserver:
+    image: stephensheldon/eurekasvr:assignment-3.2
+    ports:
+      - "8761:8761"
+  configserver:
+    image: stephensheldon/confsvr:assignment-3.2
+    ports:
+      - "8888:8888"
+    environment:
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+  zuulserver:
+    image: stephensheldon/zuulsvr:assignment-3.2
+    ports:
+      - "5555:5555"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "5555"
+      EUREKASERVER_PORT: "8761"
+      CONFIGSERVER_PORT: "8888"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+  database:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=p0stgr@s
+      - POSTGRES_DB=assets_service_local
+  assetsservice:
+    image: stephensheldon/assets-service:assignment-3.2
+    ports:
+      - "8080:8080"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8080"
+      EUREKASERVER_PORT: "8761"
+      CONFIGSERVER_PORT: "8888"
+      DATABASESERVER_PORT: "5432"
+      ZUULSERVER_PORT: "5555"
+      KAFKASERVER_PORT: "2181"
+      REDIS_PORT: "6379"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      KAFKASERVER_URI: "kafkaserver"
+      ZKSERVER_URI: "kafkaserver"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+  organizationservice:
+    image: stephensheldon/organization-service:assignment-3.2
+    ports:
+      - "8085:8085"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8085"
+      EUREKASERVER_PORT: "8761"
+      CONFIGSERVER_PORT: "8888"
+      DATABASESERVER_PORT: "5432"
+      KAFKASERVER_PORT:    "2181"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      KAFKASERVER_URI: "kafkaserver"
+      ZKSERVER_URI: "kafkaserver"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+  kafkaserver:
+    image: spotify/kafka
+    ports:
+      - 2181:2181
+      - 9092:9092
