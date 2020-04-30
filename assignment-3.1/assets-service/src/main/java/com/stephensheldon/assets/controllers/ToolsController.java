@@ -23,6 +23,4 @@ public class ToolsController {
     public List<String> getEurekaServices() {
         return discoveryService.getEurekaServices();
     }
-
-
 }
