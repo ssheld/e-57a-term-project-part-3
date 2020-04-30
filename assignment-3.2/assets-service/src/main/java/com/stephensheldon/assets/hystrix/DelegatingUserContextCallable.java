@@ -38,4 +38,3 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
         return new DelegatingUserContextCallable<>(delegate, userContext);
     }
 }
-
