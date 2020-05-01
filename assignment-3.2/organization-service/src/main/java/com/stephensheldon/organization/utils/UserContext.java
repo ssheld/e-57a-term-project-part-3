@@ -16,27 +16,27 @@ public class UserContext {
     private static final ThreadLocal<String> userId = new ThreadLocal<>();
     private static final ThreadLocal<String> orgId = new ThreadLocal<>();
 
-    public String getCorrelationId() {
+    public static String getCorrelationId() {
         return correlationId.get();
     }
 
-    public void setCorrelationId(String cid) {
+    public static void setCorrelationId(String cid) {
         correlationId.set(cid);
     }
 
-    public String getUserId() {
+    public static String getUserId() {
         return userId.get();
     }
 
-    public void setUserId(String aUser) {
+    public static void setUserId(String aUser) {
         userId.set(aUser);
     }
 
-    public String getOrgId() {
+    public static String getOrgId() {
         return orgId.get();
     }
 
-    public void setOrgId(String aOrg) {
+    public static void setOrgId(String aOrg) {
         orgId.set(aOrg);
     }
 }
