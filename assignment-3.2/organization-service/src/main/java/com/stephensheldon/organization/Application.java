@@ -24,7 +24,7 @@ public class Application {
     @Bean
     public Filter userContextFilter() {
         UserContextFilter userContextFilter = new UserContextFilter();
-        return userContextFilter();
+        return userContextFilter;
     }
 
     public static void main(String[] args) {
