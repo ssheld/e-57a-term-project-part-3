@@ -2,6 +2,7 @@ package com.stephensheldon.organization.controllers;
 
 import com.stephensheldon.organization.model.Organization;
 import com.stephensheldon.organization.services.OrganizationService;
+import com.stephensheldon.organization.utils.UserContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class OrganizationServiceController {
 
     @GetMapping(value = "/{organizationId}")
     public Organization getOrganization(@PathVariable("organizationId") String organizationId) {
-        logger.debug(String.format("Looking up data for org {}", organizationId));
+        logger.debug("Looking up data for org {} with correlation id {}", organizationId, UserContext.getCorrelationId());
 
         Organization org = organizationService.getOrg(organizationId);
         org.setContactName(org.getContactName());
