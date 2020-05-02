@@ -20,6 +20,10 @@ public class OrganizationRedisRepositoryImpl implements OrganizationRedisReposit
     private RedisTemplate<String, Organization> redisTemplate;
     private HashOperations hashOperations;
 
+    public OrganizationRedisRepositoryImpl() {
+        super();
+    }
+
     @Autowired
     private OrganizationRedisRepositoryImpl(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
