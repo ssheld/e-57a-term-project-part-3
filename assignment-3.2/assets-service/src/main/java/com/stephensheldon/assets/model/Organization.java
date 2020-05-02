@@ -1,10 +1,12 @@
 package com.stephensheldon.assets.model;
 
+import java.io.Serializable;
+
 /**
  * Author: Stephen Sheldon
  **/
 
-public class Organization {
+public class Organization implements Serializable {
 
     private String id;
     private String organizationName;
