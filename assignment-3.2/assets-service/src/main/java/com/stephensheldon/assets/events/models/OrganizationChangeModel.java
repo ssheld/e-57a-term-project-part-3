@@ -1,5 +1,8 @@
 package com.stephensheldon.assets.events.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Author: Stephen Sheldon
  **/
@@ -10,7 +13,15 @@ public class OrganizationChangeModel {
     private String organizationId;
     private String correlationId;
 
-    public OrganizationChangeModel(String type, String action, String organizationId, String correlationId) {
+    // @JsonCreator and @JsonProperty are necessary for Jackson (de)serialization. Previous
+    // code implemented a default constructor with explicit super() call. While this works, this
+    // new approach gives us the option of making this an immutable object (If we were to
+    // remove our property setter methods).
+    @JsonCreator
+    public OrganizationChangeModel(@JsonProperty("type") String type,
+                                   @JsonProperty("action") String action,
+                                   @JsonProperty("organizationId") String organizationId,
+                                   @JsonProperty("correlationId") String correlationId) {
         super();
         this.type = type;
         this.action = action;
