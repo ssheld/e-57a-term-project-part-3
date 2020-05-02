@@ -49,7 +49,7 @@ public class TrackingFilter extends ZuulFilter {
     public Object run() {
 
         if (isCorrelationIdPresent()) {
-            logger.debug("tmx-correlation-id found in tracking filter: %s. ", filterUtils.getCorrelationId());
+            logger.debug("tmx-correlation-id found in tracking filter: {}. ", filterUtils.getCorrelationId());
         } else {
             filterUtils.setCorrelationId(generateCorrelationId());
             logger.debug("tmx-correlation-id generated in tracking filter: {}.", filterUtils.getCorrelationId());
