@@ -52,7 +52,6 @@ public class AssetServiceImpl implements AssetService {
         }
     }
 
-    @HystrixCommand
     @Override
     public Asset findAssetById(String organizationId, String assetId) {
 
@@ -97,7 +96,6 @@ public class AssetServiceImpl implements AssetService {
         return assetRepository.findByOrganizationId(organizationId).get();
     }
 
-    @HystrixCommand
     @Override
     public Asset saveAsset(Asset asset) {
         asset.withId(UUID.randomUUID().toString());
@@ -105,13 +103,11 @@ public class AssetServiceImpl implements AssetService {
         return assetRepository.save(asset);
     }
 
-    @HystrixCommand
     @Override
     public void deleteAsset(Asset asset) {
         assetRepository.delete(asset.getAssetId());
     }
 
-    @HystrixCommand
     @Override
     public Asset updateAsset(Asset asset) {
 
