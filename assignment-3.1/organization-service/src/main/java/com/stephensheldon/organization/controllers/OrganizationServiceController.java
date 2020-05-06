@@ -22,7 +22,7 @@ public class OrganizationServiceController {
 
     @GetMapping(value="/{organizationId}")
     public Organization getOrganization(@PathVariable("organizationId") String organizationId) {
-        logger.debug(String.format("Looking up data for org {}", organizationId));
+        logger.debug("Looking up data for org {}", organizationId);
 
         Organization org = organizationService.getOrg(organizationId);
         org.setContactName(org.getContactName());
