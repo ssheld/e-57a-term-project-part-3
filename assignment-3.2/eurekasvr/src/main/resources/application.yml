@@ -6,8 +6,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
   server:
-    waitTimeInMsWhenSyncEmpty: 30
-    maxThreadsForPeerReplication: 0
+    waitTimeInMsWhenSyncEmpty: 0
   serviceUrl:
     defaultZone: http//localhost:8761
 
