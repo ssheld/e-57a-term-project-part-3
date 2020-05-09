@@ -54,7 +54,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.spring.cloud.kubernetes.travelagency.Application</mainClass>
+                    <mainClass>com.stephensheldon.kubernetes.simpleserver.KubernetesSimpleServerApplication</mainClass>
                     <layout>JAR</layout>
                 </configuration>
                 <executions>

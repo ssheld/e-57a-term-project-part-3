@@ -73,7 +73,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.spring.cloud.kubernetes.client.Application</mainClass>
+                    <mainClass>com.stephensheldon.kubernetes.simpleclient.KubernetesSimpleClientApplication</mainClass>
                     <layout>JAR</layout>
                 </configuration>
                 <executions>

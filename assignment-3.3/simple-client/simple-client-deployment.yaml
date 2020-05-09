@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: simple-client
+spec:
+  selector:
+    app: simple-client
+  ports:
+    - protocol: TCP
+      port: 8081
+      nodePort: 32211
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-client
+spec:
+  selector:
+    matchLabels:
+      app: simple-client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: simple-client
+    spec:
+      containers:
+        - name: simple-client
+          image: simple-client:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8081

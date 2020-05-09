@@ -1,0 +1,23 @@
+spring:
+  application.name: simple-client
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+server:
+  port: 8081
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+    health:
+      enabled: true
+    info:
+      enabled: true
+
+#Setting the logging levels for the service
+logging:
+  level:
+    org.springframework.web: WARN
+    com.stephensheldon: DEBUG
